@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">SpeciAll</string>
+    <string name="title_activity_splash_screen">SpeciAll</string>
 </resources>
