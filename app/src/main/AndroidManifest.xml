@@ -19,7 +19,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".main.MainActivity" />
+        <activity
+            android:name=".main.MainActivity"
+            android:parentActivityName=".main.activity.HomeActivity"/>
 
         <activity
             android:name=".main.activity.HomeActivity"
