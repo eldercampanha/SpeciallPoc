@@ -2,6 +2,7 @@ package br.com.startupweek.speciall.main.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.util.Log;
@@ -9,6 +10,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+
+import com.afollestad.materialdialogs.MaterialDialog;
 
 import br.com.startupweek.speciall.R;
 import br.com.startupweek.speciall.main.MainActivity;
@@ -36,7 +39,29 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         numberCard = (CardView) findViewById(R.id.numberCard);
+        numberCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.i(tag, "Test snackbar");
+                Snackbar snackbar = Snackbar
+                        .make(view, "Test snackbar", Snackbar.LENGTH_LONG);
+                snackbar.show();
+            }
+        });
+
         symbolCard = (CardView) findViewById(R.id.symbolCard);
+        symbolCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.i(tag, "Test dialog");
+                new MaterialDialog.Builder(mHomeActivity)
+                        .title("Title")
+                        .content("Content")
+                        .positiveText("Positive")
+                        .negativeText("Negative")
+                        .show();
+            }
+        });
     }
 
     public void goToActivity(Class<?> toClass){

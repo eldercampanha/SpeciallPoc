@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">SpeciAll</string>
     <string name="title_activity_splash_screen">SpeciAll</string>
-    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_activity_home">SpeciAll</string>
     <string name="about">Sobre</string>
-    <string name="title_activity_about">AboutActivity</string>
+    <string name="title_activity_about">Sobre</string>
     <string name="start">Começar</string>
 </resources>
