@@ -5,6 +5,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.PathMeasure;
 import android.graphics.Point;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -18,7 +19,9 @@ import android.view.View;
 public class TouchEventView extends View {
 
     public interface TouchEventViewInterface{
-        void ditBrushCoordinatesChanged(float x, float y);
+        void ditBrushCoordinatesChanged(float x, float y, float length);
+        void didFinishTouchEvent(float x, float y);
+        void didBeginTouchEvent(float x, float y);
     }
 
     private TouchEventViewInterface touchEventViewInterface;
@@ -46,18 +49,19 @@ public class TouchEventView extends View {
         float xPosition = event.getX();
         float yPosition = event.getY();
 
-        if(this.touchEventViewInterface != null)
-            this.touchEventViewInterface.ditBrushCoordinatesChanged(xPosition, yPosition);
+        PathMeasure pathMeasure = new PathMeasure(path, true);
 
         switch (event.getAction()){
 
             case MotionEvent.ACTION_DOWN:
                 path.moveTo(xPosition, yPosition);
+                touchEventViewInterface.didBeginTouchEvent(xPosition,yPosition);
                 return true;
             case MotionEvent.ACTION_MOVE:
                 path.lineTo(xPosition,yPosition);
                 break;
             case MotionEvent.ACTION_UP:
+                touchEventViewInterface.didFinishTouchEvent(xPosition,yPosition);
                 break;
             default:
                 return false;
