@@ -1,18 +1,12 @@
 package br.com.startupweek.speciall.main.activity;
 
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.View;
+
 
 import br.com.startupweek.speciall.R;
-import br.com.startupweek.speciall.main.MainActivity;
 
 public class SplashScreenActivity extends AppCompatActivity {
 
@@ -26,7 +20,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         mHandler.postDelayed(new Runnable(){
             @Override
             public void run() {
-                Intent intent = new Intent(mSplashScreen, MainActivity.class);
+                Intent intent = new Intent(mSplashScreen, HomeActivity.class);
                 startActivity(intent);
                 finish();
             }
