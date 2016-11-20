@@ -21,15 +21,8 @@ public class AboutActivity extends AppCompatActivity {
 
         String finalMessage = "Feito por pessoas specialls para pessoas specialls :)";
 
-        final Snackbar snackbar = Snackbar
-                .make(rootView, finalMessage, Snackbar.LENGTH_INDEFINITE)
-                .setAction("FECHAR", new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-
-                    }
-                });
-        snackbar.show();
+        Snackbar
+            .make(rootView, finalMessage, Snackbar.LENGTH_INDEFINITE)
+            .show();
     }
-
 }

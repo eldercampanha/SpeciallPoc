@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -13,26 +13,24 @@
     android:background="@color/backgroundColor"
     tools:context="br.com.startupweek.speciall.main.activity.AboutActivity">
 
-    <ImageView
-        android:id="@+id/appImageView"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:srcCompat="@drawable/launch_screen_logo"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_above="@+id/swImageView"
-        android:adjustViewBounds="false"
-        android:cropToPadding="false"
-        android:scaleType="centerCrop" />
+        android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/swImageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/startup_weekend_logo"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-</RelativeLayout>
+        <ImageView
+            android:id="@+id/appImageView"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            app:srcCompat="@drawable/launch_screen_logo"
+            android:scaleType="centerCrop"
+            />
+
+        <ImageView
+            android:id="@+id/swImageView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/startup_weekend_logo"
+            android:layout_marginTop="100dp"
+            />
+    </RelativeLayout>
+</ScrollView>
