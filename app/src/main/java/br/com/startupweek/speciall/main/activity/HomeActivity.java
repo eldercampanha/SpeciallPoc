@@ -35,6 +35,8 @@ public class HomeActivity extends AppCompatActivity {
         alphabetCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
                 goToActivity(MainActivity.class);
             }
         });

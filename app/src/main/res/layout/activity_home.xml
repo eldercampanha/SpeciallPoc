@@ -32,18 +32,17 @@
                 android:textColor="@color/lightColor"
                 android:textSize="36sp"
                 android:textAlignment="center"
-                android:layout_marginTop="30dp"
-                android:layout_gravity="center"
+                android:layout_marginTop="50dp"
+                android:layout_gravity="center_horizontal"
                 android:text="@string/alphabetText"/>
 
                 <ImageView
                     android:id="@+id/alphabetButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_long_arrow_right"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="10dp"/>
-
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:src="@drawable/ic_keyboard_arrow_right_black_36dp"
+                    android:layout_gravity="right"
+                    android:layout_marginTop="-40dp"/>
         </LinearLayout>
 
 
@@ -75,17 +74,17 @@
                 android:textColor="@color/lightColor"
                 android:textSize="36sp"
                 android:textAlignment="center"
-                android:layout_marginTop="30dp"
-                android:layout_gravity="center"
+                android:layout_marginTop="50dp"
+                android:layout_gravity="center_horizontal"
                 android:text="@string/numberText"/>
 
             <ImageView
                 android:id="@+id/numberButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_long_arrow_right"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"/>
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_keyboard_arrow_right_black_36dp"
+                android:layout_gravity="right"
+                android:layout_marginTop="-40dp"/>
         </LinearLayout>
 
     </android.support.v7.widget.CardView>
@@ -116,17 +115,17 @@
                 android:textColor="@color/lightColor"
                 android:textSize="36sp"
                 android:textAlignment="center"
-                android:layout_marginTop="30dp"
-                android:layout_gravity="center"
+                android:layout_marginTop="50dp"
+                android:layout_gravity="center_horizontal"
                 android:text="@string/symbolText"/>
 
             <ImageView
                 android:id="@+id/symbolButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_long_arrow_right"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"/>
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_keyboard_arrow_right_black_36dp"
+                android:layout_gravity="right"
+                android:layout_marginTop="-40dp"/>
         </LinearLayout>
 
 

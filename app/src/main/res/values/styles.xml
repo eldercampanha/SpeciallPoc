@@ -13,7 +13,9 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="SplashTheme" parent="AppTheme.NoActionBar"></style>
+    <style name="SplashTheme" parent="AppTheme.NoActionBar">
+        <item name="android:background">@color/backgroundColor</item>
+    </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
