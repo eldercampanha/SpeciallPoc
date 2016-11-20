@@ -1,5 +1,6 @@
 package br.com.startupweek.speciall.main.activity;
 
+import android.graphics.Color;
 import android.graphics.Point;
 import android.media.MediaPlayer;
 import android.os.CountDownTimer;
@@ -75,8 +76,9 @@ public class DrawingActivity extends AppCompatActivity {
         if(drawingInterface.validate((int)x, (int)y, height)) {
             Toast.makeText(this, "Boa!", Toast.LENGTH_SHORT).show();
             counter++;
-            MediaPlayer mp = MediaPlayer.create(getApplicationContext(), R.raw.perfect_song);
-            mp.start();
+
+            //MediaPlayer mp = MediaPlayer.create(getApplicationContext(), R.raw.perfect_song);
+            //mp.start();
         }
 
     }
@@ -84,7 +86,6 @@ public class DrawingActivity extends AppCompatActivity {
     private void reset() {
         counter = 0;
         myView.path.reset();
-        myView.path.rewind();
         Log.d("A", "resetclickado");
     }
 
@@ -111,7 +112,7 @@ public class DrawingActivity extends AppCompatActivity {
 
         myView.setVisibility(View.INVISIBLE);
 
-        new CountDownTimer(6000, 1000){
+        new CountDownTimer(4000, 1000){
             @Override
             public void onTick(long l) {
                 countdownText.setText(Long.toString((l/1000) % 60));
