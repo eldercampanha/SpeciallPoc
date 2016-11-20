@@ -101,6 +101,8 @@ public class DrawingActivity extends AppCompatActivity {
         countdownText.setText("5");
         preparationLayout.setVisibility(View.VISIBLE);
 
+        myView.setVisibility(View.INVISIBLE);
+
         new CountDownTimer(6000, 1000){
             @Override
             public void onTick(long l) {
@@ -112,6 +114,7 @@ public class DrawingActivity extends AppCompatActivity {
             public void onFinish() {
                 Log.d("COUNTDOWN", "FINISH");
                 ((LinearLayout.LayoutParams)preparationText.getLayoutParams()).weight = 0;
+                myView.setVisibility(View.VISIBLE);
                 countdownText.setVisibility(View.GONE);
             }
         }.start();

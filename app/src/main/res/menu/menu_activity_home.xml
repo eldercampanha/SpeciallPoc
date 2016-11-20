@@ -13,8 +13,9 @@ tools:context="br.com.startupweek.speciall.main.activity.HomeActivity">
 
     <item android:id="@+id/action_grafico"
         android:title="@string/graficos"
+        android:icon="@drawable/ic_show_chart_white_48dp"
         android:orderInCategory="100"
-        app:showAsAction="collapseActionView"
+        app:showAsAction="ifRoom"
         android:visible="true"/>
 
 </menu>
