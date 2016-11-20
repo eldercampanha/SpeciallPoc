@@ -11,4 +11,14 @@ public class Drawing {
     protected int endX;
     protected int endY;
 
+    public void setStartCoordinates(int x, int y) {
+        startX = x;
+        startY = y;
+    }
+
+    public void setEndCoordinates(int x, int y) {
+        endX = x;
+        endY = y;
+    }
+
 }

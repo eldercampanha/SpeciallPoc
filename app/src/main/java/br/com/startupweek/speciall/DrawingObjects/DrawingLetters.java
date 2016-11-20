@@ -15,12 +15,6 @@ public class DrawingLetters extends Drawing implements DrawingInterface {
     private boolean thirdStroke = false;
 
     @Override
-    public void setStartCoordinates(int x, int y) {
-        startX = x;
-        startY = y;
-    }
-
-    @Override
     public void setEndCoordinates(int x, int y) {
         endX = x;
         endY = y;
@@ -39,7 +33,6 @@ public class DrawingLetters extends Drawing implements DrawingInterface {
 
         if(lenght <= maxLineSize && lenght >= minLineSize)
         {
-
             if ((int) y < (int) endY && (int) x > endX) {
                 firstStroke = true;
                 return true;
