@@ -88,14 +88,13 @@ public class HomeActivity extends AppCompatActivity {
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-        // Set menu with model
         return super.onPrepareOptionsMenu(menu);
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu items for use in the action bar
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_activity_home, menu);
+        this.getSupportActionBar().setTitle("Home");
         return super.onCreateOptionsMenu(menu);
     }
     @Override
@@ -104,6 +103,9 @@ public class HomeActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.action_about:
                 goToActivity(AboutActivity.class);
+                return true;
+            case R.id.action_grafico:
+                goToActivity(GraphicsActivity.class);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

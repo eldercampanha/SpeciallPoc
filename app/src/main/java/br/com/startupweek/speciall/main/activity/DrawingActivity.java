@@ -36,7 +36,6 @@ public class DrawingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Log.i(this.getClass().getName(), "ON CREATE");
-
         setDrawingInterface(getIntent().getIntExtra("TYPE",0));
 
         myView = (TouchEventView)this.findViewById(R.id.view2);
@@ -74,15 +73,6 @@ public class DrawingActivity extends AppCompatActivity {
             counter++;
         }
 
-//        if( (drawingInterface instanceof DrawingLetters) && counter > 3) {
-//            drawingInterface = new DrawingNumbers();
-//            reset();
-//        }
-//        else if( (drawingInterface instanceof DrawingNumbers) && counter > 2) {
-//            drawingInterface = new DrawingLetters();
-//            reset();
-//        }
-
     }
 
     private void reset() {
@@ -94,10 +84,13 @@ public class DrawingActivity extends AppCompatActivity {
         Drawing drawing = null;
         if(type == Drawing.LETTERS_TYPE){
             this.drawingInterface = new DrawingLetters("A");
+            this.getSupportActionBar().setTitle("A");
         } else if(type == Drawing.NUMBERS_TYPE){
             this.drawingInterface = new DrawingNumbers("1");
+            this.getSupportActionBar().setTitle("1");
         } else if(type == Drawing.SYMBOLS_TYPE){
             this.drawingInterface = new DrawingSymbols("#");
+            this.getSupportActionBar().setTitle("#");
         }
         this.drawingInterface.setContext(this.getApplicationContext());
     }
@@ -123,4 +116,6 @@ public class DrawingActivity extends AppCompatActivity {
             }
         }.start();
     }
+
+
 }
