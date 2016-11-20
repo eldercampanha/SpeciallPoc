@@ -16,4 +16,31 @@
         class="br.com.startupweek.speciall.fingerDrawing.TouchEventView"
         android:id="@+id/view2" />
 
+    <LinearLayout
+        android:id="@+id/preparationLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <TextView
+            android:id="@+id/preparationText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textSize="300dp"
+            android:text="A"/>
+
+        <TextView
+            android:id="@+id/countdownText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textSize="75dp"
+            android:text="5"/>
+
+    </LinearLayout>
+
+
+
 </RelativeLayout>

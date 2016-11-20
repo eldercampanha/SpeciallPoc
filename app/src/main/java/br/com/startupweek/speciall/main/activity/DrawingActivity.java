@@ -1,18 +1,15 @@
 package br.com.startupweek.speciall.main.activity;
 
-import android.content.Intent;
 import android.graphics.Point;
 import android.os.CountDownTimer;
-import android.os.Handler;
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Display;
-import android.widget.ImageView;
+import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.NumberPicker;
 import android.widget.Toast;
 
 import br.com.startupweek.speciall.DrawingObjects.Drawing;
@@ -29,6 +26,10 @@ public class DrawingActivity extends AppCompatActivity {
     private int counter = 0;
 
     private DrawingInterface drawingInterface;
+
+    private LinearLayout preparationLayout;
+    private TextView preparationText;
+    private TextView countdownText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +54,10 @@ public class DrawingActivity extends AppCompatActivity {
                 drawingInterface.setEndCoordinates( (int) x, (int) y);
             }
         });
+
+        preparationLayout = (LinearLayout) findViewById(R.id.preparationLayout);
+        preparationText = (TextView) findViewById(R.id.preparationText);
+        countdownText = (TextView) findViewById(R.id.countdownText);
 
         startCountdown();
     }
@@ -97,47 +102,22 @@ public class DrawingActivity extends AppCompatActivity {
     }
 
     private void startCountdown(){
-        TextView preparationText = createPreparationViewWithText(drawingInterface.createPreparationText());
+        preparationText.setText(drawingInterface.createPreparationText());
+        countdownText.setText("5");
+        preparationLayout.setVisibility(View.VISIBLE);
 
-        final RelativeLayout mainLayout = (RelativeLayout) findViewById(R.id.activity_main);
-        mainLayout.addView(preparationText);
-
-        final TextView finalPreparationText = preparationText;
-        new CountDownTimer(5000, 1000){
+        new CountDownTimer(6000, 1000){
             @Override
             public void onTick(long l) {
-                Log.d("COUNTDOWN", "ON TICK " + l);
+                countdownText.setText(Long.toString((l/1000) % 60));
+                Log.d("COUNTDOWN", "HUMAN NUMBER: " + (l/1000) % 60);
             }
 
             @Override
             public void onFinish() {
                 Log.d("COUNTDOWN", "FINISH");
-                mainLayout.removeView(finalPreparationText);
+                countdownText.setVisibility(View.GONE);
             }
         }.start();
     }
-
-    private TextView createPreparationViewWithText(String text){
-        TextView preparationText = new TextView(this);
-        preparationText.setText(text);
-        preparationText.setTextSize(72);
-
-        preparationText.setLayoutParams(new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.MATCH_PARENT));
-
-        return preparationText;
-    }
-
-//    private TextView createTimerCountdownView(){
-//        TextView preparationText = new TextView(this);
-//        preparationText.setText(text);
-//        preparationText.setTextSize(72);
-//
-//        preparationText.setLayoutParams(new LinearLayout.LayoutParams(
-//                LinearLayout.LayoutParams.MATCH_PARENT,
-//                LinearLayout.LayoutParams.MATCH_PARENT));
-//
-//        return preparationText;
-//    }
 }

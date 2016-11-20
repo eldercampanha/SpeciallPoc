@@ -40,7 +40,6 @@ public class HomeActivity extends AppCompatActivity {
         alphabetCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 new MaterialDialog.Builder(mHomeActivity)
                         .title("Vamos praticar")
                         .content("Começaremos pela letra A, você está pronto ?")
@@ -66,17 +65,27 @@ public class HomeActivity extends AppCompatActivity {
         numberCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                goToDrawingActivity(DrawingNumbers.class);
-
-
-                Log.i(tag, "Test snackbar");
-                Snackbar snackbar = Snackbar
-                        .make(view, "Test snackbar", Snackbar.LENGTH_LONG);
-                snackbar.show();
-
                 MediaPlayer mp = MediaPlayer.create(getApplicationContext(), R.raw.perfect_song);
                 mp.start();
+
+                new MaterialDialog.Builder(mHomeActivity)
+                        .title("Vamos praticar")
+                        .content("Hora do número 1, você está pronto ?")
+                        .positiveText("Sim, vamos lá!")
+                        .negativeText("Ainda não")
+                        .onPositive(new MaterialDialog.SingleButtonCallback() {
+                            @Override
+                            public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                                goToDrawingActivity(DrawingNumbers.class);
+                            }
+                        })
+                        .onAny(new MaterialDialog.SingleButtonCallback() {
+                            @Override
+                            public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                                dialog.dismiss();
+                            }
+                        })
+                        .show();
             }
         });
 
@@ -84,15 +93,23 @@ public class HomeActivity extends AppCompatActivity {
         symbolCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                goToDrawingActivity(DrawingSymbols.class);
-
-                Log.i(tag, "Test dialog");
                 new MaterialDialog.Builder(mHomeActivity)
-                        .title("Title")
-                        .content("Content")
-                        .positiveText("Positive")
-                        .negativeText("Negative")
+                        .title("Vamos praticar")
+                        .content("Hora do símbolo #, você está pronto ?")
+                        .positiveText("Sim, vamos lá!")
+                        .negativeText("Ainda não")
+                        .onPositive(new MaterialDialog.SingleButtonCallback() {
+                            @Override
+                            public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                                goToDrawingActivity(DrawingSymbols.class);
+                            }
+                        })
+                        .onAny(new MaterialDialog.SingleButtonCallback() {
+                            @Override
+                            public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                                dialog.dismiss();
+                            }
+                        })
                         .show();
             }
         });
@@ -116,9 +133,9 @@ public class HomeActivity extends AppCompatActivity {
 
     }
     public void goToActivity(Class<?> toClass){
-//        Log.i(tag, "FROM: " + tag + " | TO: " + toClass.getName());
-//        Intent intent = new Intent(mHomeActivity, toClass);
-//        startActivity(intent);
+        Log.i(tag, "FROM: " + tag + " | TO: " + toClass.getName());
+        Intent intent = new Intent(mHomeActivity, toClass);
+        startActivity(intent);
     }
 
     @Override
