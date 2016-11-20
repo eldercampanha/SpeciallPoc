@@ -99,7 +99,9 @@ public class DrawingActivity extends AppCompatActivity {
         } else if(type == Drawing.SYMBOLS_TYPE){
             this.drawingInterface = new DrawingSymbols("#");
         }
+        this.drawingInterface.setContext(this.getApplicationContext());
     }
+
 
     private void startCountdown(){
         preparationText.setText(drawingInterface.createPreparationText());
