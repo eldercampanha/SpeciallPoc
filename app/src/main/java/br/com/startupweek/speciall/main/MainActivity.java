@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import br.com.startupweek.speciall.R;
 import br.com.startupweek.speciall.fingerDrawing.TouchEventView;
@@ -14,6 +15,8 @@ public class MainActivity extends AppCompatActivity {
     private static float lastY = 0;
     private int counter = 0;
     private ImageView imgLetter;
+    private TouchEventView myView;
+    private int lines = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
         Log.i(this.getClass().getName(), "ON CREATE");
 
-        TouchEventView myView = (TouchEventView)this.findViewById(R.id.view2);
+        myView = (TouchEventView)this.findViewById(R.id.view2);
         myView.setInterface(new TouchEventView.TouchEventViewInterface() {
             @Override
             public void ditBrushCoordinatesChanged(float x, float y, float length) {
@@ -33,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void didFinishTouchEvent(float x, float y) {
                 calculateLineLength(x, y);
-//                counter++;
+                //counter++;
             }
 
             @Override
@@ -48,44 +51,45 @@ public class MainActivity extends AppCompatActivity {
 
         double b = Math.pow((int)y - (int)lastY, 2);
         double c = Math.pow((int)x - (int)lastX, 2);
+        int lenght = (int)Math.sqrt(b + c);
+        Log.i("LENGHT", "L = " + lenght);
 
-        Log.i("LENGHT", "L = " + Math.sqrt(b + c));
-    }
-
-    public boolean checkAcurrency(float x, float y, float length){
-
-        if(counter == 0) {
-            //test for the first 'A' stroke
-            if ((x + 8) > lastX) {
-                if ((int) x < (int) lastX) {
-                    Log.i(this.getClass().getName(), "1 x error");
-                    Log.i(this.getClass().getName(), "1 x difference = " + ((int) x - (int) lastX));
-                }
+        if((int)lastY > (int)y) {
+            if ((int) lastY <= 1270 && (int) y >= 50 && lenght <= 1200 && lenght >= 1100) {
+                Toast.makeText(this,"Good Job!",Toast.LENGTH_SHORT).show();
+                lines++;
+//                Log.i("TAG", "success down up");
+//                Log.i("TAG", "success X " + (int) x + " " + (int) lastX);
+//                Log.i("TAG", "success Y" + (int) y + " " + (int) lastY);
             }
-            if ((y + 50) < lastY) {
-                Log.i(this.getClass().getName(), "1 y error");
-                Log.i(this.getClass().getName(), "1 lastY = " + lastY + " y = " + y);
+        }
+        else if((int)lastY < (int)y) {
+            if ((int) y <= 1270 && (int) lastY >= 50 && lenght <= 1200 && lenght >= 1100) {
+                Toast.makeText(this,"Good Job!",Toast.LENGTH_SHORT).show();
+                lines++;
+//                Log.i("TAG", "success up down");
+//                Log.i("TAG", "success X " + (int) x + " " + (int) lastX);
+//                Log.i("TAG", "success Y" + (int) y + " " + (int) lastY);
             }
-        } else if (counter == 1) {
-
-            if ((x + 8) < lastX) {
-                if ((int) x < (int) lastX) {
-                    Log.i(this.getClass().getName(), "2 x error");
-                    Log.i(this.getClass().getName(), "2 x difference = " + ((int) x - (int) lastX));
-                }
-            }
-            if ((y - 50) > lastY) {
-                Log.i(this.getClass().getName(), "2 y error");
-                Log.i(this.getClass().getName(), "2 lastY = " + lastY + " y = " + y);
-            }
-        } else {
-
         }
 
-        Log.i("LENGHT", "L = " + length);
-        lastX = x;
-        lastY = y;
 
-        return true;
+        if ( (int)lastX > (int)x ){//&& Math.abs((int)lastY - (int)y)  < 50){
+                Toast.makeText(this,"Good Job!",Toast.LENGTH_SHORT).show();
+        }
+                Log.i("TAG", "success X " + (int)lastX  + " " + (int)x + " " +Math.abs((int)lastY - (int)y));
+
+//        switch (counter){
+//            case 0:
+//                if(lastY < 1300 && y > 50 && lenght <= 1200)
+//                    Log.i("TAG","success");
+//                return;
+//            case 1:
+//                return;
+//
+//            case 2:
+//                return;
+//        }
     }
+
 }

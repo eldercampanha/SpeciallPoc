@@ -26,7 +26,10 @@ public class TouchEventView extends View {
 
     private TouchEventViewInterface touchEventViewInterface;
     private Paint paint = new Paint();
-    private Path path = new Path();
+    public Path path = new Path();
+    private Canvas canvas;
+
+
 
     public TouchEventView(Context ctx, AttributeSet attrs){
         super(ctx, attrs);
@@ -34,13 +37,14 @@ public class TouchEventView extends View {
         paint.setColor(Color.BLACK);
         paint.setStrokeJoin(Paint.Join.ROUND);
         paint.setStyle(Paint.Style.STROKE);
-        paint.setStrokeWidth(5f);
+        paint.setStrokeWidth(20f);
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         canvas.drawPath(path,paint);
+        this.canvas = canvas;
     }
 
     @Override
@@ -49,7 +53,6 @@ public class TouchEventView extends View {
         float xPosition = event.getX();
         float yPosition = event.getY();
 
-        PathMeasure pathMeasure = new PathMeasure(path, true);
 
         switch (event.getAction()){
 
@@ -62,6 +65,7 @@ public class TouchEventView extends View {
                 break;
             case MotionEvent.ACTION_UP:
                 touchEventViewInterface.didFinishTouchEvent(xPosition,yPosition);
+//                path.reset();
                 break;
             default:
                 return false;
