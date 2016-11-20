@@ -111,6 +111,7 @@ public class DrawingActivity extends AppCompatActivity {
             @Override
             public void onFinish() {
                 Log.d("COUNTDOWN", "FINISH");
+                ((LinearLayout.LayoutParams)preparationText.getLayoutParams()).weight = 0;
                 countdownText.setVisibility(View.GONE);
             }
         }.start();
