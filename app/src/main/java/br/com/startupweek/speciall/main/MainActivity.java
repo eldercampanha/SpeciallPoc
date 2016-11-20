@@ -1,11 +1,17 @@
 package br.com.startupweek.speciall.main;
 
+import android.content.Intent;
 import android.graphics.Point;
+import android.os.CountDownTimer;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Display;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import br.com.startupweek.speciall.DrawingObjects.DrawingInterface;
@@ -48,6 +54,8 @@ public class MainActivity extends AppCompatActivity {
                 drawingInterface.setEndCoordinates( (int) x, (int) y);
             }
         });
+
+        startCountdown();
     }
 
     private void calculateLineLength(float x, float y) {
@@ -61,4 +69,52 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "from Drawing Good Job!", Toast.LENGTH_SHORT).show();
 
     }
+
+    private void startCountdown(){
+        TextView preparationText = null;
+        if(drawingInterface instanceof DrawingLetters){
+            preparationText = createPreparationViewWithText("A");
+        }
+
+        final RelativeLayout mainLayout = (RelativeLayout) findViewById(R.id.activity_main);
+        mainLayout.addView(preparationText);
+
+        final TextView finalPreparationText = preparationText;
+        new CountDownTimer(5000, 1000){
+            @Override
+            public void onTick(long l) {
+                Log.d("COUNTDOWN", "ON TICK " + l);
+            }
+
+            @Override
+            public void onFinish() {
+                Log.d("COUNTDOWN", "FINISH");
+                mainLayout.removeView(finalPreparationText);
+            }
+        }.start();
+    }
+
+    private TextView createPreparationViewWithText(String text){
+        TextView preparationText = new TextView(this);
+        preparationText.setText(text);
+        preparationText.setTextSize(72);
+
+        preparationText.setLayoutParams(new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.MATCH_PARENT));
+
+        return preparationText;
+    }
+
+//    private TextView createTimerCountdownView(){
+//        TextView preparationText = new TextView(this);
+//        preparationText.setText(text);
+//        preparationText.setTextSize(72);
+//
+//        preparationText.setLayoutParams(new LinearLayout.LayoutParams(
+//                LinearLayout.LayoutParams.MATCH_PARENT,
+//                LinearLayout.LayoutParams.MATCH_PARENT));
+//
+//        return preparationText;
+//    }
 }
