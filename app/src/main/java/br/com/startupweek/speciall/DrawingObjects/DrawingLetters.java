@@ -50,6 +50,14 @@ public class DrawingLetters extends Drawing implements DrawingInterface, Seriali
         int minDrawingAreaY = (int) (height * 0.15);
         int maxDrawingAreaY = (int) (height * 0.8);
 
+/*       ____________
+        |/////|/////|
+        |  1  |  2  |
+        |_____|_____|
+        |     |     |
+        |  3  |  4  |
+        |/////|/////|
+ */
         if(y > minDrawingAreaY && y < maxDrawingAreaY ){
 
             if(lenght <= maxLineSize && lenght >= minLineSize)

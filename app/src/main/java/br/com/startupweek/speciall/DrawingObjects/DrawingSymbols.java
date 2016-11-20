@@ -51,18 +51,18 @@ public class DrawingSymbols extends Drawing implements DrawingInterface {
         int minErrorMargingForX = (int) (width * 0.2);
         int minErrorMargingForY = (int) (height * 0.2);
 /*       ____________
-        |     |     |
+        |/////|/////|
         |  1  |  2  |
         |_____|_____|
         |     |     |
         |  3  |  4  |
-        |_____|_____|
+        |/////|/////|
  */
 
         //1.2 # goes after midle of the screen
         if(x < (width/2 * 1.2)  && endX < (width/2 * 1.2)){ // 1 and 3 firstStroke
 
-            if(y > endY &&  lenght >= minStrokeLenght && lenght <= maxStrokeLenght) { // up to down / line with minimum lenght
+            if(y < endY &&  lenght >= minStrokeLenght && lenght <= maxStrokeLenght) { // up to down / line with minimum lenght
 
                 if(Math.abs(x - endX) <= minErrorMargingForX){
                     firstStroke = true;
@@ -71,7 +71,7 @@ public class DrawingSymbols extends Drawing implements DrawingInterface {
             }
         } else { // 2 and 4 secondStroke, thirdStroke, forthStroke
 
-            if(y > endY &&  lenght >= minStrokeLenght && lenght <= maxStrokeLenght) { // up to down / line with minimum lenght
+            if(y < endY &&  lenght >= minStrokeLenght && lenght <= maxStrokeLenght) { // up to down / line with minimum lenght
 
                 if(Math.abs(x - endX) <= minErrorMargingForX){
                     secondStroke = true;
