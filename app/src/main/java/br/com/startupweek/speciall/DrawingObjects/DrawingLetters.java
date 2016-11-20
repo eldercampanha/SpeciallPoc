@@ -64,7 +64,7 @@ public class DrawingLetters extends Drawing implements DrawingInterface, Seriali
                     return true;
                 }
             }
-            else if( (int)x < endX && Math.abs(y - endY) < 80){
+            else if( (int)x > endX && Math.abs(y - endY) < 80){
                 thirdStroke = true;
                 return true;
             }
