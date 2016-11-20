@@ -77,10 +77,11 @@ public class DrawingActivity extends AppCompatActivity {
         if(drawingInterface.validate((int)x, (int)y, height)) {
 
             if (drawingInterface.isCompleted()) {
-                Toast.makeText(this, "Perfec!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Perfect!", Toast.LENGTH_SHORT).show();
                 MediaPlayer mp = MediaPlayer.create(getApplicationContext(),R.raw.perfect_song);
                 mp.start();
                 reset();
+                setDrawingInterface(getIntent().getIntExtra("TYPE",0));
             }
             else {
                 Toast.makeText(this, "Boa!", Toast.LENGTH_SHORT).show();
