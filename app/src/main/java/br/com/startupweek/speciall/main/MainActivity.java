@@ -55,16 +55,16 @@ public class MainActivity extends AppCompatActivity {
         Log.i("LENGHT", "L = " + lenght);
 
         if((int)lastY > (int)y) {
-            if ((int) lastY <= 1270 && (int) y >= 50 && lenght <= 1200 && lenght >= 1100) {
-                Toast.makeText(this,"Good Job!",Toast.LENGTH_SHORT).show();
+            if ((int) lastY <= 1400 && (int) y >= 50 && lenght <= 1300 && lenght >= 1100) {
+                Toast.makeText(this,"LY > y Good Job!",Toast.LENGTH_SHORT).show();
                 lines++;
 //                Log.i("TAG", "success down up");
 //                Log.i("TAG", "success X " + (int) x + " " + (int) lastX);
 //                Log.i("TAG", "success Y" + (int) y + " " + (int) lastY);
             }
         }
-        else if((int)lastY < (int)y) {
-            if ((int) y <= 1270 && (int) lastY >= 50 && lenght <= 1200 && lenght >= 1100) {
+        else if((int)y > (int)lastY) {
+            if ((int) y <= 1400 && (int) lastY >= 50 && lenght <= 1300 && lenght >= 1100) {
                 Toast.makeText(this,"Good Job!",Toast.LENGTH_SHORT).show();
                 lines++;
 //                Log.i("TAG", "success up down");
