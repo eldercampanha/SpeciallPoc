@@ -13,6 +13,7 @@ import br.com.startupweek.speciall.DrawingObjects.Drawing;
 import br.com.startupweek.speciall.DrawingObjects.DrawingInterface;
 import br.com.startupweek.speciall.DrawingObjects.DrawingLetters;
 import br.com.startupweek.speciall.DrawingObjects.DrawingNumbers;
+import br.com.startupweek.speciall.DrawingObjects.DrawingSymbols;
 import br.com.startupweek.speciall.R;
 import br.com.startupweek.speciall.fingerDrawing.TouchEventView;
 
@@ -81,8 +82,8 @@ public class DrawingActivity extends AppCompatActivity {
         if(type == Drawing.LETTERS_TYPE)
            this.drawingInterface = new DrawingLetters();
         if(type == Drawing.NUMBERS_TYPE)
-            this.drawingInterface = new DrawingLetters();
+            this.drawingInterface = new DrawingNumbers();
         if(type == Drawing.SYMBOLS_TYPE)
-            this.drawingInterface = new DrawingLetters();
+            this.drawingInterface = new DrawingSymbols();
     }
 }
