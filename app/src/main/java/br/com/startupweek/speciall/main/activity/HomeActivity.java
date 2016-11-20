@@ -16,8 +16,11 @@ import android.view.View;
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 
+import br.com.startupweek.speciall.DrawingObjects.Drawing;
+import br.com.startupweek.speciall.DrawingObjects.DrawingLetters;
+import br.com.startupweek.speciall.DrawingObjects.DrawingNumbers;
+import br.com.startupweek.speciall.DrawingObjects.DrawingSymbols;
 import br.com.startupweek.speciall.R;
-import br.com.startupweek.speciall.main.MainActivity;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -46,7 +49,7 @@ public class HomeActivity extends AppCompatActivity {
                         .onPositive(new MaterialDialog.SingleButtonCallback() {
                             @Override
                             public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                                goToActivity(MainActivity.class);
+                                goToDrawingActivity(DrawingLetters.class);
                             }
                         })
                         .onAny(new MaterialDialog.SingleButtonCallback() {
@@ -63,6 +66,10 @@ public class HomeActivity extends AppCompatActivity {
         numberCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                goToDrawingActivity(DrawingNumbers.class);
+
+
                 Log.i(tag, "Test snackbar");
                 Snackbar snackbar = Snackbar
                         .make(view, "Test snackbar", Snackbar.LENGTH_LONG);
@@ -77,6 +84,9 @@ public class HomeActivity extends AppCompatActivity {
         symbolCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                goToDrawingActivity(DrawingSymbols.class);
+
                 Log.i(tag, "Test dialog");
                 new MaterialDialog.Builder(mHomeActivity)
                         .title("Title")
@@ -88,10 +98,27 @@ public class HomeActivity extends AppCompatActivity {
         });
     }
 
-    public void goToActivity(Class<?> toClass){
-        Log.i(tag, "FROM: " + tag + " | TO: " + toClass.getName());
-        Intent intent = new Intent(mHomeActivity, toClass);
+    private void goToDrawingActivity(Class<?> drawingLettersClass) {
+
+        Intent intent = new Intent(mHomeActivity, DrawingActivity.class);
+
+        if (drawingLettersClass.isInstance(new DrawingLetters())) {
+            intent.putExtra("TYPE", Drawing.LETTERS_TYPE);
+        }
+        else if (drawingLettersClass.isInstance(new DrawingNumbers())) {
+            intent.putExtra("TYPE", Drawing.NUMBERS_TYPE);
+        }
+        else if (drawingLettersClass.isInstance(new DrawingSymbols())) {
+            intent.putExtra("TYPE", Drawing.SYMBOLS_TYPE);
+        }
+
         startActivity(intent);
+
+    }
+    public void goToActivity(Class<?> toClass){
+//        Log.i(tag, "FROM: " + tag + " | TO: " + toClass.getName());
+//        Intent intent = new Intent(mHomeActivity, toClass);
+//        startActivity(intent);
     }
 
     @Override

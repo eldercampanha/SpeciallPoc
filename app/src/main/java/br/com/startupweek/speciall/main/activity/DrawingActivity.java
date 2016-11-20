@@ -1,4 +1,4 @@
-package br.com.startupweek.speciall.main;
+package br.com.startupweek.speciall.main.activity;
 
 import android.content.Intent;
 import android.graphics.Point;
@@ -12,21 +12,21 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.NumberPicker;
 import android.widget.Toast;
 
+import br.com.startupweek.speciall.DrawingObjects.Drawing;
 import br.com.startupweek.speciall.DrawingObjects.DrawingInterface;
 import br.com.startupweek.speciall.DrawingObjects.DrawingLetters;
+import br.com.startupweek.speciall.DrawingObjects.DrawingNumbers;
+import br.com.startupweek.speciall.DrawingObjects.DrawingSymbols;
 import br.com.startupweek.speciall.R;
 import br.com.startupweek.speciall.fingerDrawing.TouchEventView;
 
-public class MainActivity extends AppCompatActivity {
+public class DrawingActivity extends AppCompatActivity {
 
-    private static float lastX = 0;
-    private static float lastY = 0;
-    private int counter = 0;
-    private ImageView imgLetter;
     private TouchEventView myView;
-    private int lines = 0;
+    private int counter = 0;
 
     private DrawingInterface drawingInterface;
 
@@ -36,8 +36,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Log.i(this.getClass().getName(), "ON CREATE");
 
-        drawingInterface = new DrawingLetters();
-
+        setDrawingInterface(getIntent().getIntExtra("TYPE",0));
 
         myView = (TouchEventView)this.findViewById(R.id.view2);
         myView.setInterface(new TouchEventView.TouchEventViewInterface() {
@@ -65,9 +64,35 @@ public class MainActivity extends AppCompatActivity {
         display.getSize(size);
         int height = size.y;
 
-        if(drawingInterface.validate((int)x, (int)y, height))
-            Toast.makeText(this, "from Drawing Good Job!", Toast.LENGTH_SHORT).show();
+        if(drawingInterface.validate((int)x, (int)y, height)) {
+            Toast.makeText(this, "Good Job!", Toast.LENGTH_SHORT).show();
+            counter++;
+        }
 
+//        if( (drawingInterface instanceof DrawingLetters) && counter > 3) {
+//            drawingInterface = new DrawingNumbers();
+//            reset();
+//        }
+//        else if( (drawingInterface instanceof DrawingNumbers) && counter > 2) {
+//            drawingInterface = new DrawingLetters();
+//            reset();
+//        }
+
+    }
+
+    private void reset() {
+        counter = 0;
+        myView.path.reset();
+    }
+
+    public void setDrawingInterface(int type) {
+
+        if(type == Drawing.LETTERS_TYPE)
+           this.drawingInterface = new DrawingLetters();
+        if(type == Drawing.NUMBERS_TYPE)
+            this.drawingInterface = new DrawingNumbers();
+        if(type == Drawing.SYMBOLS_TYPE)
+            this.drawingInterface = new DrawingSymbols();
     }
 
     private void startCountdown(){

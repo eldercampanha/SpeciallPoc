@@ -20,7 +20,7 @@
         </activity>
 
         <activity
-            android:name=".main.MainActivity"
+            android:name=".main.activity.DrawingActivity"
             android:parentActivityName=".main.activity.HomeActivity"/>
 
         <activity

@@ -6,9 +6,22 @@ package br.com.startupweek.speciall.DrawingObjects;
 
 public class Drawing {
 
+    public static final int LETTERS_TYPE = 0;
+    public static final int NUMBERS_TYPE = 1;
+    public static final int SYMBOLS_TYPE = 2;
     protected int startX;
     protected int startY;
     protected int endX;
     protected int endY;
+
+    public void setStartCoordinates(int x, int y) {
+        startX = x;
+        startY = y;
+    }
+
+    public void setEndCoordinates(int x, int y) {
+        endX = x;
+        endY = y;
+    }
 
 }

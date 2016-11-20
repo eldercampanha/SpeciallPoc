@@ -4,21 +4,17 @@ import android.graphics.Point;
 import android.view.Display;
 import android.view.Window;
 
+import java.io.Serializable;
+
 /**
  * Created by elder-dell on 2016-11-20.
  */
 
-public class DrawingLetters extends Drawing implements DrawingInterface {
+public class DrawingLetters extends Drawing implements DrawingInterface, Serializable {
 
     private boolean firstStroke = false;
     private boolean secondStroke = false;
     private boolean thirdStroke = false;
-
-    @Override
-    public void setStartCoordinates(int x, int y) {
-        startX = x;
-        startY = y;
-    }
 
     @Override
     public void setEndCoordinates(int x, int y) {
@@ -39,7 +35,6 @@ public class DrawingLetters extends Drawing implements DrawingInterface {
 
         if(lenght <= maxLineSize && lenght >= minLineSize)
         {
-
             if ((int) y < (int) endY && (int) x > endX) {
                 firstStroke = true;
                 return true;
