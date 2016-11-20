@@ -9,4 +9,5 @@ public interface DrawingInterface {
     void setStartCoordinates(int x, int y);
     void setEndCoordinates(int x, int y);
     boolean validate (int x, int y, int height);
+    String createPreparationText();
 }

@@ -16,6 +16,14 @@ public class DrawingLetters extends Drawing implements DrawingInterface, Seriali
     private boolean secondStroke = false;
     private boolean thirdStroke = false;
 
+    public DrawingLetters(){
+        super();
+    }
+
+    public DrawingLetters(String preparationText){
+        super(preparationText);
+    }
+
     @Override
     public void setEndCoordinates(int x, int y) {
         endX = x;
@@ -51,5 +59,10 @@ public class DrawingLetters extends Drawing implements DrawingInterface, Seriali
         }
 
         return false;
+    }
+
+    @Override
+    public String createPreparationText() {
+        return getPreparationText();
     }
 }

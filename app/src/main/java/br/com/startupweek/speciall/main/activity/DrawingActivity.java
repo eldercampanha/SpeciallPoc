@@ -86,20 +86,18 @@ public class DrawingActivity extends AppCompatActivity {
     }
 
     public void setDrawingInterface(int type) {
-
-        if(type == Drawing.LETTERS_TYPE)
-           this.drawingInterface = new DrawingLetters();
-        if(type == Drawing.NUMBERS_TYPE)
-            this.drawingInterface = new DrawingNumbers();
-        if(type == Drawing.SYMBOLS_TYPE)
-            this.drawingInterface = new DrawingSymbols();
+        Drawing drawing = null;
+        if(type == Drawing.LETTERS_TYPE){
+            this.drawingInterface = new DrawingLetters("A");
+        } else if(type == Drawing.NUMBERS_TYPE){
+            this.drawingInterface = new DrawingNumbers("1");
+        } else if(type == Drawing.SYMBOLS_TYPE){
+            this.drawingInterface = new DrawingSymbols("#");
+        }
     }
 
     private void startCountdown(){
-        TextView preparationText = null;
-        if(drawingInterface instanceof DrawingLetters){
-            preparationText = createPreparationViewWithText("A");
-        }
+        TextView preparationText = createPreparationViewWithText(drawingInterface.createPreparationText());
 
         final RelativeLayout mainLayout = (RelativeLayout) findViewById(R.id.activity_main);
         mainLayout.addView(preparationText);

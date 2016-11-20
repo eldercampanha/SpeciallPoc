@@ -14,6 +14,16 @@ public class Drawing {
     protected int endX;
     protected int endY;
 
+    private String preparationText;
+
+    public Drawing(){
+
+    }
+
+    public Drawing(String preparationText){
+        this.preparationText = preparationText;
+    }
+
     public void setStartCoordinates(int x, int y) {
         startX = x;
         startY = y;
@@ -24,4 +34,11 @@ public class Drawing {
         endY = y;
     }
 
+    public String getPreparationText() {
+        return preparationText;
+    }
+
+    public void setPreparationText(String preparationText) {
+        this.preparationText = preparationText;
+    }
 }

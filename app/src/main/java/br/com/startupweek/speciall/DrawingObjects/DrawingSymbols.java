@@ -6,8 +6,21 @@ package br.com.startupweek.speciall.DrawingObjects;
 
 public class DrawingSymbols extends Drawing implements DrawingInterface {
 
+    public DrawingSymbols(){
+        super();
+    }
+
+    public DrawingSymbols(String preparationText){
+        super(preparationText);
+    }
+
     @Override
     public boolean validate(int x, int y, int height) {
         return false;
+    }
+
+    @Override
+    public String createPreparationText() {
+        return getPreparationText();
     }
 }
