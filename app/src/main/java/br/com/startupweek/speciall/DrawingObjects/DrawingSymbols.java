@@ -46,8 +46,8 @@ public class DrawingSymbols extends Drawing implements DrawingInterface {
         double b = Math.pow((int)y - (int)endY, 2);
         double c = Math.pow((int)x - (int)endX, 2);
         int lenght = (int)Math.sqrt(b + c);
-        int minStrokeLenght = (int) (height * 0.4);
-        int maxStrokeLenght = (int) (height * 0.9);
+        int minStrokeLenght = (int) (height * 0.3);
+        int maxStrokeLenght = (int) (height * 0.6);
         int minErrorMargingForX = (int) (width * 0.2);
         int minErrorMargingForY = (int) (height * 0.2);
 /*       ____________
@@ -59,7 +59,8 @@ public class DrawingSymbols extends Drawing implements DrawingInterface {
         |_____|_____|
  */
 
-        if(x < width/2 && endX < width/2){ // 1 and 3 firstStroke
+        //1.2 # goes after midle of the screen
+        if(x < (width/2 * 1.2)  && endX < (width/2 * 1.2)){ // 1 and 3 firstStroke
 
             if(y > endY &&  lenght >= minStrokeLenght && lenght <= maxStrokeLenght) { // up to down / line with minimum lenght
 
