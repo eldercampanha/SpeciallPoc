@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">SpeciAll</string>
     <string name="title_activity_splash_screen">SpeciAll</string>
-    <string name="title_activity_home">SpeciAll</string>
+    <string name="title_activity_home">Home</string>
     <string name="about">Sobre</string>
     <string name="graficos">Graficos</string>
     <string name="title_activity_about">Sobre</string>
@@ -10,4 +10,5 @@
     <string name="alphabetText">A</string>
     <string name="numberText">1</string>
     <string name="symbolText">\#</string>
+    <string name="reset">Apagar</string>
 </resources>

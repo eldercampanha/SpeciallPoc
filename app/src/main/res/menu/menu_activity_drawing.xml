@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="br.com.startupweek.speciall.main.activity.HomeActivity">
+
+    <item android:id="@+id/action_reset"
+        android:title="@string/reset"
+        android:icon="@drawable/ic_autorenew_white_48dp"
+        android:orderInCategory="100"
+        app:showAsAction="ifRoom"
+        android:visible="true" />
+</menu>
