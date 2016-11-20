@@ -1,6 +1,7 @@
 package br.com.startupweek.speciall.main.activity;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -46,6 +47,9 @@ public class HomeActivity extends AppCompatActivity {
                 Snackbar snackbar = Snackbar
                         .make(view, "Test snackbar", Snackbar.LENGTH_LONG);
                 snackbar.show();
+
+                MediaPlayer mp = MediaPlayer.create(getApplicationContext(), R.raw.perfect_song);
+                mp.start();
             }
         });
 

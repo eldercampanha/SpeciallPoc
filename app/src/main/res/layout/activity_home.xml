@@ -6,7 +6,8 @@
     android:id="@+id/activity_home"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="br.com.startupweek.speciall.main.activity.HomeActivity">
+    tools:context="br.com.startupweek.speciall.main.activity.HomeActivity"
+    android:background="@color/backgroundColor">
 
     <android.support.v7.widget.CardView
         xmlns:card_view="http://schemas.android.com/apk/res-auto"
@@ -15,26 +16,34 @@
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:layout_margin="8dp"
-        card_view:cardCornerRadius="4dp">
+        card_view:cardCornerRadius="4dp"
+        card_view:cardBackgroundColor="@color/secondaryCardColor">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <ImageView
-
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-
-                android:src="@drawable/alphabet_image"
-                android:scaleType="centerCrop" />
+            android:orientation="vertical"
+            >
 
             <TextView
                 android:id="@+id/alphabetText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Alfabeto"/>
+                android:textColor="@color/lightColor"
+                android:textSize="36sp"
+                android:textAlignment="center"
+                android:layout_marginTop="30dp"
+                android:layout_gravity="center"
+                android:text="@string/alphabetText"/>
+
+                <ImageView
+                    android:id="@+id/alphabetButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_long_arrow_right"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"/>
+
         </LinearLayout>
 
 
@@ -51,13 +60,34 @@
         android:layout_alignLeft="@+id/alphabetCard"
         android:layout_alignStart="@+id/alphabetCard"
         android:layout_alignRight="@id/alphabetCard"
-        android:layout_alignEnd="@id/alphabetCard">
+        android:layout_alignEnd="@id/alphabetCard"
+        card_view:cardBackgroundColor="@color/cardColor">
 
-        <TextView
-            android:id="@+id/numberText"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Numeros"/>
+            android:orientation="vertical"
+            >
+            <TextView
+                android:id="@+id/numberText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/lightColor"
+                android:textSize="36sp"
+                android:textAlignment="center"
+                android:layout_marginTop="30dp"
+                android:layout_gravity="center"
+                android:text="@string/numberText"/>
+
+            <ImageView
+                android:id="@+id/numberButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_long_arrow_right"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"/>
+        </LinearLayout>
+
     </android.support.v7.widget.CardView>
 
     <android.support.v7.widget.CardView
@@ -71,12 +101,34 @@
         android:layout_alignLeft="@id/numberCard"
         android:layout_alignStart="@id/numberCard"
         android:layout_alignRight="@id/numberCard"
-        android:layout_alignEnd="@id/numberCard">
+        android:layout_alignEnd="@id/numberCard"
+        card_view:cardBackgroundColor="@color/colorAccent">
 
-        <TextView
-            android:id="@+id/symbolText"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Simbolos"/>
+            android:orientation="vertical"
+            >
+            <TextView
+                android:id="@+id/symbolText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/lightColor"
+                android:textSize="36sp"
+                android:textAlignment="center"
+                android:layout_marginTop="30dp"
+                android:layout_gravity="center"
+                android:text="@string/symbolText"/>
+
+            <ImageView
+                android:id="@+id/symbolButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_long_arrow_right"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"/>
+        </LinearLayout>
+
+
     </android.support.v7.widget.CardView>
 </RelativeLayout>

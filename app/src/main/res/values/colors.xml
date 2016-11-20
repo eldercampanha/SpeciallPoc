@@ -2,7 +2,15 @@
 <resources>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+
     <color name="gray">#e3e3e4</color>
     <color name="darkGray">#747678</color>
+    <color name="backgroundColor">#118ab2</color>
+
+    <color name="colorAccent">#EF476f</color>
+    <color name="cardColor">#ffd166</color>
+    <color name="secondaryCardColor">#06d6a0</color>
+
+    <color name="lightColor">#FFFFFF</color>
+
 </resources>
