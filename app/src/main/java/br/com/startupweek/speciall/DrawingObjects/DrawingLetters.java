@@ -84,6 +84,11 @@ public class DrawingLetters extends Drawing implements DrawingInterface, Seriali
     }
 
     @Override
+    public boolean isCompleted() {
+        return firstStroke && secondStroke && thirdStroke;
+    }
+
+    @Override
     public String createPreparationText() {
         return getPreparationText();
     }

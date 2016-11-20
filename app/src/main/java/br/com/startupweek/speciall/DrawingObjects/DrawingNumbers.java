@@ -85,4 +85,10 @@ public class DrawingNumbers extends Drawing implements DrawingInterface {
     public String createPreparationText() {
         return getPreparationText();
     }
+
+    @Override
+    public boolean isCompleted() {
+        return firsStroke && secondStroke;
+    }
+
 }

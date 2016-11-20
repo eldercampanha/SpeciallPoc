@@ -102,4 +102,10 @@ public class DrawingSymbols extends Drawing implements DrawingInterface {
     public String createPreparationText() {
         return getPreparationText();
     }
+
+    @Override
+    public boolean isCompleted() {
+        return firstStroke && secondStroke && thirdStroke && forthStroke;
+    }
+
 }

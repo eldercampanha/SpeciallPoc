@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -74,19 +75,30 @@ public class DrawingActivity extends AppCompatActivity {
         int height = size.y;
 
         if(drawingInterface.validate((int)x, (int)y, height)) {
-            Toast.makeText(this, "Boa!", Toast.LENGTH_SHORT).show();
-            counter++;
 
-            //MediaPlayer mp = MediaPlayer.create(getApplicationContext(), R.raw.perfect_song);
-            //mp.start();
+            if (drawingInterface.isCompleted()) {
+                Toast.makeText(this, "Perfec!", Toast.LENGTH_SHORT).show();
+                MediaPlayer mp = MediaPlayer.create(getApplicationContext(),R.raw.perfect_song);
+                mp.start();
+                reset();
+            }
+            else {
+                Toast.makeText(this, "Boa!", Toast.LENGTH_SHORT).show();
+            }
         }
 
+        counter++;
+
+        if(counter > 5)
+            reset();
     }
 
+    public void didTapReset(View view){
+        reset();
+    }
     private void reset() {
         counter = 0;
         myView.path.reset();
-        Log.d("A", "resetclickado");
     }
 
     public void setDrawingInterface(int type) {

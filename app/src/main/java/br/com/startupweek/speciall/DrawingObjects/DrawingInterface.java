@@ -12,5 +12,6 @@ public interface DrawingInterface {
     void setContext(Context context);
     void setEndCoordinates(int x, int y);
     boolean validate (int x, int y, int height);
+    boolean isCompleted();
     String createPreparationText();
 }
