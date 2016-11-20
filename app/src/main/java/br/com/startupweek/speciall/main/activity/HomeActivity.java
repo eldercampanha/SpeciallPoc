@@ -3,6 +3,7 @@ package br.com.startupweek.speciall.main.activity;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
@@ -12,6 +13,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 
 import br.com.startupweek.speciall.DrawingObjects.Drawing;
@@ -38,8 +40,25 @@ public class HomeActivity extends AppCompatActivity {
         alphabetCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                goToDrawingActivity(DrawingLetters.class);
-//                goToActivity(DrawingActivity.class);
+
+                new MaterialDialog.Builder(mHomeActivity)
+                        .title("Vamos praticar")
+                        .content("Começaremos pela letra A, você está pronto ?")
+                        .positiveText("Sim, vamos lá!")
+                        .negativeText("Ainda não")
+                        .onPositive(new MaterialDialog.SingleButtonCallback() {
+                            @Override
+                            public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                                goToDrawingActivity(DrawingLetters.class);
+                            }
+                        })
+                        .onAny(new MaterialDialog.SingleButtonCallback() {
+                            @Override
+                            public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                                dialog.dismiss();
+                            }
+                        })
+                        .show();
             }
         });
 

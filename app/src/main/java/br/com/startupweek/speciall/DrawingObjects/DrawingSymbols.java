@@ -11,6 +11,14 @@ import android.view.WindowManager;
 
 public class DrawingSymbols extends Drawing implements DrawingInterface {
 
+    public DrawingSymbols(){
+        super();
+    }
+
+    public DrawingSymbols(String preparationText){
+        super(preparationText);
+    }
+
     private boolean firstStroke = false;
     private boolean secondStroke = false;
     private boolean thirdStroke = false;
@@ -87,5 +95,10 @@ public class DrawingSymbols extends Drawing implements DrawingInterface {
         }
 
         return false;
+    }
+
+    @Override
+    public String createPreparationText() {
+        return getPreparationText();
     }
 }

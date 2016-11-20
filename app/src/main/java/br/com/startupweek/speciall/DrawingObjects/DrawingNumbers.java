@@ -12,6 +12,14 @@ public class DrawingNumbers extends Drawing implements DrawingInterface {
     private boolean firsStroke = false;
     private boolean secondStroke = false;
 
+    public DrawingNumbers(){
+        super();
+    }
+
+    public DrawingNumbers(String preparationText){
+        super(preparationText);
+    }
+
     @Override
     public void setContext(Context context) {
 
@@ -47,5 +55,10 @@ public class DrawingNumbers extends Drawing implements DrawingInterface {
         }
 
         return false;
+    }
+
+    @Override
+    public String createPreparationText() {
+        return getPreparationText();
     }
 }
