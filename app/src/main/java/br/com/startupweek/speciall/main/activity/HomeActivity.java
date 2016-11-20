@@ -15,7 +15,6 @@ import android.view.View;
 import com.afollestad.materialdialogs.MaterialDialog;
 
 import br.com.startupweek.speciall.R;
-import br.com.startupweek.speciall.main.MainActivity;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -37,7 +36,7 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View view) {
 
 
-                goToActivity(MainActivity.class);
+                goToActivity(DrawingActivity.class);
             }
         });
 

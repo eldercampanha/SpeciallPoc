@@ -1,4 +1,4 @@
-package br.com.startupweek.speciall.main;
+package br.com.startupweek.speciall.main.activity;
 
 import android.graphics.Point;
 import android.support.v7.app.AppCompatActivity;
@@ -15,7 +15,7 @@ import br.com.startupweek.speciall.DrawingObjects.DrawingNumbers;
 import br.com.startupweek.speciall.R;
 import br.com.startupweek.speciall.fingerDrawing.TouchEventView;
 
-public class MainActivity extends AppCompatActivity {
+public class DrawingActivity extends AppCompatActivity {
 
     private TouchEventView myView;
     private int counter = 0;
