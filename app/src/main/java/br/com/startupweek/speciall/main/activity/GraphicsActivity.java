@@ -13,5 +13,6 @@ public class GraphicsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_graphics);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        this.getSupportActionBar().setTitle("Graficos (em andamento)");
     }
 }

@@ -20,7 +20,8 @@
         </activity>
         <activity
             android:name=".main.activity.DrawingActivity"
-            android:parentActivityName=".main.activity.HomeActivity" />
+            android:parentActivityName=".main.activity.HomeActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".main.activity.HomeActivity"
             android:label="@string/title_activity_home" />
