@@ -40,24 +40,7 @@ public class HomeActivity extends AppCompatActivity {
         alphabetCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new MaterialDialog.Builder(mHomeActivity)
-                        .title("Vamos praticar")
-                        .content("Começaremos pela letra A, você está pronto ?")
-                        .positiveText("Sim, vamos lá!")
-                        .negativeText("Ainda não")
-                        .onPositive(new MaterialDialog.SingleButtonCallback() {
-                            @Override
-                            public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                                goToDrawingActivity(DrawingLetters.class);
-                            }
-                        })
-                        .onAny(new MaterialDialog.SingleButtonCallback() {
-                            @Override
-                            public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                                dialog.dismiss();
-                            }
-                        })
-                        .show();
+                goToDrawingActivity(DrawingLetters.class);
             }
         });
 
@@ -67,25 +50,7 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 MediaPlayer mp = MediaPlayer.create(getApplicationContext(), R.raw.perfect_song);
                 mp.start();
-
-                new MaterialDialog.Builder(mHomeActivity)
-                        .title("Vamos praticar")
-                        .content("Hora do número 1, você está pronto ?")
-                        .positiveText("Sim, vamos lá!")
-                        .negativeText("Ainda não")
-                        .onPositive(new MaterialDialog.SingleButtonCallback() {
-                            @Override
-                            public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                                goToDrawingActivity(DrawingNumbers.class);
-                            }
-                        })
-                        .onAny(new MaterialDialog.SingleButtonCallback() {
-                            @Override
-                            public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                                dialog.dismiss();
-                            }
-                        })
-                        .show();
+                goToDrawingActivity(DrawingNumbers.class);
             }
         });
 
@@ -93,24 +58,7 @@ public class HomeActivity extends AppCompatActivity {
         symbolCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new MaterialDialog.Builder(mHomeActivity)
-                        .title("Vamos praticar")
-                        .content("Hora do símbolo #, você está pronto ?")
-                        .positiveText("Sim, vamos lá!")
-                        .negativeText("Ainda não")
-                        .onPositive(new MaterialDialog.SingleButtonCallback() {
-                            @Override
-                            public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                                goToDrawingActivity(DrawingSymbols.class);
-                            }
-                        })
-                        .onAny(new MaterialDialog.SingleButtonCallback() {
-                            @Override
-                            public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                                dialog.dismiss();
-                            }
-                        })
-                        .show();
+                goToDrawingActivity(DrawingSymbols.class);
             }
         });
     }
