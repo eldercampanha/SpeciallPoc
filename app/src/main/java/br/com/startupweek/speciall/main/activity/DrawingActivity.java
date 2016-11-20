@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.NumberPicker;
 import android.widget.Toast;
 
+import br.com.startupweek.speciall.DrawingObjects.Drawing;
 import br.com.startupweek.speciall.DrawingObjects.DrawingInterface;
 import br.com.startupweek.speciall.DrawingObjects.DrawingLetters;
 import br.com.startupweek.speciall.DrawingObjects.DrawingNumbers;
@@ -28,8 +29,7 @@ public class DrawingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Log.i(this.getClass().getName(), "ON CREATE");
 
-//        drawingInterface = new DrawingLetters();
-        drawingInterface = new DrawingNumbers();
+        setDrawingInterface(getIntent().getIntExtra("TYPE",0));
 
         myView = (TouchEventView)this.findViewById(R.id.view2);
         myView.setInterface(new TouchEventView.TouchEventViewInterface() {
@@ -74,5 +74,15 @@ public class DrawingActivity extends AppCompatActivity {
     private void reset() {
         counter = 0;
         myView.path.reset();
+    }
+
+    public void setDrawingInterface(int type) {
+
+        if(type == Drawing.LETTERS_TYPE)
+           this.drawingInterface = new DrawingLetters();
+        if(type == Drawing.NUMBERS_TYPE)
+            this.drawingInterface = new DrawingLetters();
+        if(type == Drawing.SYMBOLS_TYPE)
+            this.drawingInterface = new DrawingLetters();
     }
 }

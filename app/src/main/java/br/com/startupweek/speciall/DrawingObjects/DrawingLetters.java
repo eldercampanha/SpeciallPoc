@@ -4,11 +4,13 @@ import android.graphics.Point;
 import android.view.Display;
 import android.view.Window;
 
+import java.io.Serializable;
+
 /**
  * Created by elder-dell on 2016-11-20.
  */
 
-public class DrawingLetters extends Drawing implements DrawingInterface {
+public class DrawingLetters extends Drawing implements DrawingInterface, Serializable {
 
     private boolean firstStroke = false;
     private boolean secondStroke = false;
