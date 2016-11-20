@@ -5,4 +5,7 @@
     <string name="about">Sobre</string>
     <string name="title_activity_about">Sobre</string>
     <string name="start">Começar</string>
+    <string name="alphabetText">ABC</string>
+    <string name="numberText">123</string>
+    <string name="symbolText">\@%#$</string>
 </resources>
