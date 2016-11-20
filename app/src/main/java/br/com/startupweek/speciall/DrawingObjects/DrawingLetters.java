@@ -1,5 +1,6 @@
 package br.com.startupweek.speciall.DrawingObjects;
 
+import android.content.Context;
 import android.graphics.Point;
 import android.view.Display;
 import android.view.Window;
@@ -15,6 +16,11 @@ public class DrawingLetters extends Drawing implements DrawingInterface, Seriali
     private boolean firstStroke = false;
     private boolean secondStroke = false;
     private boolean thirdStroke = false;
+
+    @Override
+    public void setContext(Context context) {
+
+    }
 
     @Override
     public void setEndCoordinates(int x, int y) {

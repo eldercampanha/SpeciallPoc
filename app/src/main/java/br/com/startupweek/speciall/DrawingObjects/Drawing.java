@@ -1,5 +1,7 @@
 package br.com.startupweek.speciall.DrawingObjects;
 
+import android.content.Context;
+
 /**
  * Created by elder-dell on 2016-11-20.
  */
@@ -13,6 +15,7 @@ public class Drawing {
     protected int startY;
     protected int endX;
     protected int endY;
+    public Context context;
 
     public void setStartCoordinates(int x, int y) {
         startX = x;

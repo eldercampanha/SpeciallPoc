@@ -1,5 +1,7 @@
 package br.com.startupweek.speciall.DrawingObjects;
 
+import android.content.Context;
+
 /**
  * Created by elder-dell on 2016-11-20.
  */
@@ -9,6 +11,11 @@ public class DrawingNumbers extends Drawing implements DrawingInterface {
 
     private boolean firsStroke = false;
     private boolean secondStroke = false;
+
+    @Override
+    public void setContext(Context context) {
+
+    }
 
     @Override
     public void setEndCoordinates(int x, int y) {

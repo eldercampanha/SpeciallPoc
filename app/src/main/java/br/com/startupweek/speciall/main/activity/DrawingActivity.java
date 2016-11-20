@@ -85,5 +85,7 @@ public class DrawingActivity extends AppCompatActivity {
             this.drawingInterface = new DrawingNumbers();
         if(type == Drawing.SYMBOLS_TYPE)
             this.drawingInterface = new DrawingSymbols();
+
+        this.drawingInterface.setContext(this.getApplicationContext());
     }
 }
