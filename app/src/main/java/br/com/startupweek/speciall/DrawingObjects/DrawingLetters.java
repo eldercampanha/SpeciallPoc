@@ -39,30 +39,38 @@ public class DrawingLetters extends Drawing implements DrawingInterface, Seriali
     @Override
     public boolean validate(int x, int y, int height) {
 
-        int minLineSize = (int)(height *0.6);
-        int maxLineSize = (int)(height *0.9);
+        int minLineSize = (int)(height *0.3);
+        int maxLineSize = (int)(height *0.7);
 
         double b = Math.pow((int)y - (int)endY, 2);
         double c = Math.pow((int)x - (int)endX, 2);
         int lenght = (int)Math.sqrt(b + c);
 
 
-        if(lenght <= maxLineSize && lenght >= minLineSize)
-        {
-            if ((int) y < (int) endY && (int) x > endX) {
-                firstStroke = true;
-                return true;
-            }
-            else if ((int) y > (int)endY && (int)x > endX )
+        int minDrawingAreaY = (int) (height * 0.2);
+        int maxDrawingAreaY = (int) (height * 0.8);
+
+        if(y > minDrawingAreaY && y < maxDrawingAreaY ){
+
+            if(lenght <= maxLineSize && lenght >= minLineSize)
             {
-                secondStroke = true;
+                if ((int) y < (int) endY && (int) x > endX) {
+                    firstStroke = true;
+                    return true;
+                }
+                else if ((int) y > (int)endY && (int)x > endX )
+                {
+                    secondStroke = true;
+                    return true;
+                }
+            }
+            else if( (int)x < endX && Math.abs(y - endY) < 80){
+                thirdStroke = true;
                 return true;
             }
+
         }
-        else if( (int)x < endX && Math.abs(y - endY) < 80){
-            thirdStroke = true;
-            return true;
-        }
+
 
         return false;
     }
