@@ -1,6 +1,7 @@
 package br.com.startupweek.speciall.main.activity;
 
 import android.graphics.Point;
+import android.media.MediaPlayer;
 import android.os.CountDownTimer;
 
 import android.support.v7.app.AppCompatActivity;
@@ -72,8 +73,10 @@ public class DrawingActivity extends AppCompatActivity {
         int height = size.y;
 
         if(drawingInterface.validate((int)x, (int)y, height)) {
-            Toast.makeText(this, "Good Job!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Boa!", Toast.LENGTH_SHORT).show();
             counter++;
+            MediaPlayer mp = MediaPlayer.create(getApplicationContext(), R.raw.perfect_song);
+            mp.start();
         }
 
     }

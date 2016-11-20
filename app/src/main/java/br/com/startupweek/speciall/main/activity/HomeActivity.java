@@ -48,8 +48,6 @@ public class HomeActivity extends AppCompatActivity {
         numberCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                MediaPlayer mp = MediaPlayer.create(getApplicationContext(), R.raw.perfect_song);
-                mp.start();
                 goToDrawingActivity(DrawingNumbers.class);
             }
         });
