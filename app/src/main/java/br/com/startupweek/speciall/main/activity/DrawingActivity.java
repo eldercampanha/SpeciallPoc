@@ -1,6 +1,10 @@
 package br.com.startupweek.speciall.main.activity;
 
+import android.content.Context;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Path;
 import android.graphics.Point;
 import android.media.MediaPlayer;
 import android.os.CountDownTimer;
@@ -13,10 +17,13 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
 
 import br.com.startupweek.speciall.DrawingObjects.Drawing;
 import br.com.startupweek.speciall.DrawingObjects.DrawingInterface;
@@ -24,6 +31,7 @@ import br.com.startupweek.speciall.DrawingObjects.DrawingLetters;
 import br.com.startupweek.speciall.DrawingObjects.DrawingNumbers;
 import br.com.startupweek.speciall.DrawingObjects.DrawingSymbols;
 import br.com.startupweek.speciall.R;
+import br.com.startupweek.speciall.fingerDrawing.Polygon;
 import br.com.startupweek.speciall.fingerDrawing.TouchEventView;
 
 public class DrawingActivity extends AppCompatActivity {
@@ -45,13 +53,75 @@ public class DrawingActivity extends AppCompatActivity {
         setDrawingInterface(getIntent().getIntExtra("TYPE",0));
 
         myView = (TouchEventView)this.findViewById(R.id.view2);
+
+        WindowManager wm = (WindowManager) this.getApplicationContext().getSystemService(Context.WINDOW_SERVICE);
+        Display display = wm.getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        int width = size.x;
+        int heigh = size.y;
+
+
+        //LETTER A
+        int[] x = {(int)(width*0.1),
+                (int)(width*0.4),
+                (int)(width*0.5),
+                (int)(width*0.8),
+                (int)(width*0.7) - 70,
+                (int)(width*0.6) - 50,
+                (int)(width*0.3) + 60,
+                (int)(width*0.2) + 100,
+                (int)(width*0.1)
+        };
+
+        int[] y = {(int)(heigh*0.6) + 50,
+                (int)(heigh*0.2) - 50,
+                (int)(heigh*0.2) - 50,
+                (int)(heigh*0.6) + 50,
+                (int)(heigh*0.6) + 50,
+                (int)(heigh*0.5) + 70,
+                (int)(heigh*0.5) + 70,
+                (int)(heigh*0.6) + 50,
+                (int)(heigh*0.6) + 50
+        };
+
+        final Polygon outside = new Polygon();
+        for(int i = 0; i < x.length; i++){
+            outside.addPoints(new Point(x[i],y[i]));
+        }
+
+       //LETTER A INSIDE
+        int[] triangloX = {(int)(width*0.3) + 80, width/2 -50, (int)(width*0.6) - 70 ,(int)(width*0.3) + 70};
+        int[] triangloY = {(int)(heigh*0.5) -100,(int)(heigh*0.3),(int)(heigh*0.5) -100,(int)(heigh*0.5) -100};
+
+        final Polygon inside = new Polygon();
+        for(int i = 0; i < triangloX.length; i++){
+            inside.addPoints(new Point(triangloX[i],triangloY[i]));
+        }
+
+
+        myView.polygons.add(outside);
+        myView.polygons.add(inside);
+
         myView.setInterface(new TouchEventView.TouchEventViewInterface() {
             @Override
-            public void ditBrushCoordinatesChanged(float x, float y, float length) {}
+            public void ditBrushCoordinatesChanged(Point point) {
+                if(outside.containsPoint(point)
+                        && !inside.containsPoint(point )) {
+                   insideThePolygon();
+                } else {
+                    outsideThePolygon();
+                }
+            }
+
+            @Override
+            public void ditBrushCoordinatesChanged(float x, float y, float length) {
+                
+            }
 
             @Override
             public void didFinishTouchEvent(float x, float y) {
-                calculateLineLength(x, y);
+//                calculateLineLength(x, y);
             }
 
             @Override
@@ -64,7 +134,15 @@ public class DrawingActivity extends AppCompatActivity {
         preparationText = (TextView) findViewById(R.id.preparationText);
         countdownText = (TextView) findViewById(R.id.countdownText);
 
-        startCountdown();
+//        startCountdown();
+    }
+
+    private void outsideThePolygon() {
+        myView.setBackgroundColor(Color.WHITE);
+    }
+
+    private void insideThePolygon() {
+        myView.setBackgroundColor(Color.BLUE);
     }
 
     private void calculateLineLength(float x, float y) {
@@ -165,3 +243,4 @@ public class DrawingActivity extends AppCompatActivity {
         }
     }
 }
+

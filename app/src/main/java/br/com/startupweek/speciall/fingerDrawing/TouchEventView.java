@@ -12,13 +12,19 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
+import java.util.ArrayList;
+
 /**
  * Created by elder-dell on 2016-11-19.
  */
 
 public class TouchEventView extends View {
 
+    public ArrayList<Polygon> polygons = new ArrayList<>();
+    boolean opa = true;
+
     public interface TouchEventViewInterface{
+        void ditBrushCoordinatesChanged(Point point);
         void ditBrushCoordinatesChanged(float x, float y, float length);
         void didFinishTouchEvent(float x, float y);
         void didBeginTouchEvent(float x, float y);
@@ -27,9 +33,6 @@ public class TouchEventView extends View {
     private TouchEventViewInterface touchEventViewInterface;
     private Paint paint = new Paint();
     public Path path = new Path();
-    private Canvas canvas;
-
-
 
     public TouchEventView(Context ctx, AttributeSet attrs){
         super(ctx, attrs);
@@ -43,8 +46,11 @@ public class TouchEventView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+
+        for(Polygon p :  polygons)
+            p.drawPolygon(canvas, paint);
+
         canvas.drawPath(path,paint);
-        this.canvas = canvas;
     }
 
     @Override
@@ -61,6 +67,7 @@ public class TouchEventView extends View {
                 touchEventViewInterface.didBeginTouchEvent(xPosition,yPosition);
                 return true;
             case MotionEvent.ACTION_MOVE:
+                touchEventViewInterface.ditBrushCoordinatesChanged(new Point((int)xPosition,(int)yPosition));
                 path.lineTo(xPosition,yPosition);
                 break;
             case MotionEvent.ACTION_UP:
@@ -79,3 +86,4 @@ public class TouchEventView extends View {
         this.touchEventViewInterface = eventViewInterface;
     }
 }
+
