@@ -1,10 +1,7 @@
 package br.com.startupweek.speciall.main.activity;
 
 import android.content.Context;
-import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Path;
 import android.graphics.Point;
 import android.media.MediaPlayer;
 import android.os.CountDownTimer;
@@ -18,12 +15,9 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.util.ArrayList;
 
 import br.com.startupweek.speciall.DrawingObjects.Drawing;
 import br.com.startupweek.speciall.DrawingObjects.DrawingInterface;
@@ -44,6 +38,8 @@ public class DrawingActivity extends AppCompatActivity {
     private LinearLayout preparationLayout;
     private TextView preparationText;
     private TextView countdownText;
+    final Polygon outside = new Polygon();
+    final Polygon inside = new Polygon();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,7 +81,6 @@ public class DrawingActivity extends AppCompatActivity {
                 (int)(heigh*0.6) + 50
         };
 
-        final Polygon outside = new Polygon();
         for(int i = 0; i < x.length; i++){
             outside.addPoints(new Point(x[i],y[i]));
         }
@@ -94,7 +89,6 @@ public class DrawingActivity extends AppCompatActivity {
         int[] triangloX = {(int)(width*0.3) + 80, width/2 -50, (int)(width*0.6) - 70 ,(int)(width*0.3) + 70};
         int[] triangloY = {(int)(heigh*0.5) -100,(int)(heigh*0.3),(int)(heigh*0.5) -100,(int)(heigh*0.5) -100};
 
-        final Polygon inside = new Polygon();
         for(int i = 0; i < triangloX.length; i++){
             inside.addPoints(new Point(triangloX[i],triangloY[i]));
         }
@@ -106,28 +100,20 @@ public class DrawingActivity extends AppCompatActivity {
         myView.setInterface(new TouchEventView.TouchEventViewInterface() {
             @Override
             public void ditBrushCoordinatesChanged(Point point) {
-                if(outside.containsPoint(point)
-                        && !inside.containsPoint(point )) {
-                   insideThePolygon();
-                } else {
-                    outsideThePolygon();
-                }
+                checkPointInside(point);
             }
 
             @Override
-            public void ditBrushCoordinatesChanged(float x, float y, float length) {
-                
+            public void didFinishTouchEvent(Point point) {
+                setBackbroundToWhite();
+                reset();
             }
 
             @Override
-            public void didFinishTouchEvent(float x, float y) {
-//                calculateLineLength(x, y);
+            public void didBeginTouchEvent(Point point) {
+                checkPointInside(point);
             }
 
-            @Override
-            public void didBeginTouchEvent(float x, float y) {
-                drawingInterface.setEndCoordinates( (int) x, (int) y);
-            }
         });
 
         preparationLayout = (LinearLayout) findViewById(R.id.preparationLayout);
@@ -137,11 +123,20 @@ public class DrawingActivity extends AppCompatActivity {
 //        startCountdown();
     }
 
-    private void outsideThePolygon() {
+    private void checkPointInside(Point point) {
+        if(outside.containsPoint(point)
+                && !inside.containsPoint(point )) {
+            setBackbroundToBlue();
+        } else {
+            setBackbroundToWhite();
+        }
+    }
+
+    private void setBackbroundToWhite() {
         myView.setBackgroundColor(Color.WHITE);
     }
 
-    private void insideThePolygon() {
+    private void setBackbroundToBlue() {
         myView.setBackgroundColor(Color.BLUE);
     }
 

@@ -25,9 +25,8 @@ public class TouchEventView extends View {
 
     public interface TouchEventViewInterface{
         void ditBrushCoordinatesChanged(Point point);
-        void ditBrushCoordinatesChanged(float x, float y, float length);
-        void didFinishTouchEvent(float x, float y);
-        void didBeginTouchEvent(float x, float y);
+        void didFinishTouchEvent(Point point);
+        void didBeginTouchEvent(Point point);
     }
 
     private TouchEventViewInterface touchEventViewInterface;
@@ -58,20 +57,20 @@ public class TouchEventView extends View {
 
         float xPosition = event.getX();
         float yPosition = event.getY();
-
+        Point point = new Point((int)xPosition,(int)yPosition);
 
         switch (event.getAction()){
 
             case MotionEvent.ACTION_DOWN:
                 path.moveTo(xPosition, yPosition);
-                touchEventViewInterface.didBeginTouchEvent(xPosition,yPosition);
+                touchEventViewInterface.didBeginTouchEvent(point);
                 return true;
             case MotionEvent.ACTION_MOVE:
-                touchEventViewInterface.ditBrushCoordinatesChanged(new Point((int)xPosition,(int)yPosition));
+                touchEventViewInterface.ditBrushCoordinatesChanged(point);
                 path.lineTo(xPosition,yPosition);
                 break;
             case MotionEvent.ACTION_UP:
-                touchEventViewInterface.didFinishTouchEvent(xPosition,yPosition);
+                touchEventViewInterface.didFinishTouchEvent(point);
 //                path.reset();
                 break;
             default:
