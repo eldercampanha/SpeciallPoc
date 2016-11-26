@@ -70,15 +70,15 @@ public class DrawingActivity extends AppCompatActivity {
                 (int)(width*0.1)
         };
 
-        int[] y = {(int)(heigh*0.6) + 50,
+        int[] y = {(int)(heigh*0.6) + 70,
                 (int)(heigh*0.2) - 50,
                 (int)(heigh*0.2) - 50,
-                (int)(heigh*0.6) + 50,
-                (int)(heigh*0.6) + 50,
+                (int)(heigh*0.6) + 70,
+                (int)(heigh*0.6) + 70,
                 (int)(heigh*0.5) + 70,
                 (int)(heigh*0.5) + 70,
-                (int)(heigh*0.6) + 50,
-                (int)(heigh*0.6) + 50
+                (int)(heigh*0.6) + 70,
+                (int)(heigh*0.6) + 70
         };
 
         for(int i = 0; i < x.length; i++){
@@ -100,18 +100,18 @@ public class DrawingActivity extends AppCompatActivity {
         myView.setInterface(new TouchEventView.TouchEventViewInterface() {
             @Override
             public void ditBrushCoordinatesChanged(Point point) {
-                checkPointInside(point);
+//                calculateLineLength(point);
             }
 
             @Override
             public void didFinishTouchEvent(Point point) {
-                setBackbroundToWhite();
+                calculateLineLength(point);
                 reset();
             }
 
             @Override
             public void didBeginTouchEvent(Point point) {
-                checkPointInside(point);
+                drawingInterface.setEndCoordinates(point.x, point.y);
             }
 
         });
@@ -120,34 +120,22 @@ public class DrawingActivity extends AppCompatActivity {
         preparationText = (TextView) findViewById(R.id.preparationText);
         countdownText = (TextView) findViewById(R.id.countdownText);
 
-//        startCountdown();
+        startCountdown();
     }
 
-    private void checkPointInside(Point point) {
-        if(outside.containsPoint(point)
-                && !inside.containsPoint(point )) {
-            setBackbroundToBlue();
-        } else {
-            setBackbroundToWhite();
-        }
+    private boolean checkPointInside(Point point) {
+
+        return outside.containsPoint(point) && !inside.containsPoint(point);
     }
 
-    private void setBackbroundToWhite() {
-        myView.setBackgroundColor(Color.WHITE);
-    }
-
-    private void setBackbroundToBlue() {
-        myView.setBackgroundColor(Color.BLUE);
-    }
-
-    private void calculateLineLength(float x, float y) {
+    private void calculateLineLength(Point point) {
 
         Display display = getWindowManager().getDefaultDisplay();
         Point size = new Point();
         display.getSize(size);
         int height = size.y;
 
-        if(drawingInterface.validate((int)x, (int)y, height)) {
+        if(drawingInterface.validate(point.x, point.y, height) && checkPointInside(point)) {
 
             if (drawingInterface.isCompleted()) {
                 Toast.makeText(this, "Perfect!", Toast.LENGTH_SHORT).show();

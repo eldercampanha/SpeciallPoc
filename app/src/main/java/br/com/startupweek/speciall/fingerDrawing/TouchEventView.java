@@ -46,9 +46,10 @@ public class TouchEventView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
+/*//      uncomment the bellow code to se the clickable area
         for(Polygon p :  polygons)
-            p.drawPolygon(canvas, paint);
-
+           p.drawPolygon(canvas, paint);
+*/
         canvas.drawPath(path,paint);
     }
 
