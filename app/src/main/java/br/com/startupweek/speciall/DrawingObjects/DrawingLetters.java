@@ -39,8 +39,8 @@ public class DrawingLetters extends Drawing implements DrawingInterface, Seriali
     @Override
     public boolean validate(int x, int y, int height) {
 
-        int minLineSize = (int)(height *0.3);
-        int maxLineSize = (int)(height *0.7);
+        int minLineSize = (int)(height *0.4);
+        int maxLineSize = (int)(height *0.8);
 
         double b = Math.pow((int)y - (int)endY, 2);
         double c = Math.pow((int)x - (int)endX, 2);
@@ -72,7 +72,7 @@ public class DrawingLetters extends Drawing implements DrawingInterface, Seriali
                     return true;
                 }
             }
-            else if( (int)x > endX && Math.abs(y - endY) < 80){
+            else if( (int)x > endX && Math.abs(y - endY) < 50){
                 thirdStroke = true;
                 return true;
             }

@@ -59,6 +59,11 @@ public class HomeActivity extends AppCompatActivity {
                 goToDrawingActivity(DrawingSymbols.class);
             }
         });
+
+        //DISABLE BUTTONS FOR TESTS ON A
+        numberCard.setVisibility(View.GONE);
+        symbolCard.setVisibility(View.GONE);
+
     }
 
     private void goToDrawingActivity(Class<?> drawingLettersClass) {
